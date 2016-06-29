@@ -70,6 +70,16 @@ SPIDeviceDriver SPIDeviceManager::_device[] = {
     SPIDeviceDriver("dataflash",  0, 0, AP_HAL::SPIDevice_Dataflash,   SPI_MODE_3, 8, RPI_GPIO_5,   6*MHZ, 6*MHZ),
     SPIDeviceDriver("raspio",     0, 0, AP_HAL::SPIDevice_RASPIO,      SPI_MODE_3, 8, RPI_GPIO_7,   10*MHZ, 10*MHZ),
 };
+#elif CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_RASPILOTXU4
+SPIDeviceDriver SPIDeviceManager::_device[] = {
+    /* MPU9250 is restricted to 1MHz for non-data and interrupt registers */
+    SPIDeviceDriver("mpu6000",    1, 0, AP_HAL::SPIDevice_MPU6000,     SPI_MODE_3, 8, RPI_GPIO_25,  1*MHZ, 20*MHZ),
+    SPIDeviceDriver("ms5611",     1, 0, AP_HAL::SPIDevice_MS5611,      SPI_MODE_3, 8, RPI_GPIO_23,  10*MHZ, 10*MHZ),
+    SPIDeviceDriver("lsm9ds0_am", 1, 0, AP_HAL::SPIDevice_LSM9DS0_AM,  SPI_MODE_3, 8, RPI_GPIO_22,  10*MHZ, 10*MHZ),
+    SPIDeviceDriver("lsm9ds0_g",  1, 0, AP_HAL::SPIDevice_LSM9DS0_G,   SPI_MODE_3, 8, RPI_GPIO_12,  10*MHZ, 10*MHZ),
+    SPIDeviceDriver("dataflash",  1, 0, AP_HAL::SPIDevice_Dataflash,   SPI_MODE_3, 8, RPI_GPIO_5,   6*MHZ, 6*MHZ),
+    SPIDeviceDriver("raspio",     1, 0, AP_HAL::SPIDevice_RASPIO,      SPI_MODE_3, 8, RPI_GPIO_7,   10*MHZ, 10*MHZ),
+};
 #elif CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_BH
 SPIDeviceDriver SPIDeviceManager::_device[] = {
     SPIDeviceDriver("mpu9250", 0, 0, AP_HAL::SPIDevice_MPU9250, SPI_MODE_0, 8, RPI_GPIO_7, 1*MHZ,   20*MHZ),
