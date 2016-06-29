@@ -38,3 +38,5 @@ help:
 	@echo "  bhat - the RaspberryPi + BH HAT combination"
 	@echo "  pxfmini - the RaspberryPi Zero + PXFmini cape combination"
 	@echo "  navio2 - the RaspberryPi + NavIO2 cape combination"
+	@echo "  raspilotxu4 - The odroid xu4 with shifter shield + 
+pilot cape"

@@ -63,6 +63,16 @@ ZYNQ_LD      :=  arm-xilinx-linux-gnueabi-g++
 ZYNQ_GDB     :=  arm-xilinx-linux-gnueabi-gdb
 ZYNQ_OBJCOPY :=  arm-xilinx-linux-gnueabi-objcopy
 
+#toolchains got xu4
+XU4_CXX     :=  arm-linux-gnueabihf-g++
+XU4_CC      :=  arm-linux-gnueabihf-gcc
+XU4_AS      :=  arm-linux-gnueabihf-gcc
+XU4_AR      :=  arm-linux-gnueabihf-ar
+XU4_LD      :=  arm-linux-gnueabihf-g++
+XU4_GDB     :=  arm-linux-gnueabihf-gdb
+XU4_OBJCOPY :=  arm-linux-gnueabihf-objcopy
+
+
 # enable ccache if installed
 CCACHE :=  $(call FIND_TOOL,ccache)
 export CCACHE
