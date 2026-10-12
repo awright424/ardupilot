@@ -41,6 +41,15 @@ void Util::init(int argc, char * const *argv) {
 }
 
 // set current IMU temperatue in degrees C
+/*
+  @SYS/timers.txt: let the RC output driver report its timing (the E902
+  output driver uses this; other Linux drivers report nothing)
+ */
+void Util::timer_info(ExpandingString &str)
+{
+    hal.rcout->timer_info(str);
+}
+
 void Util::set_imu_temp(float current)
 {
     _heat->set_imu_temp(current);

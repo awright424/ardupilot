@@ -68,6 +68,9 @@ public:
 
     uint32_t available_memory(void) override;
 
+    // @SYS/timers.txt: output-driver timing information (as on ChibiOS)
+    void timer_info(ExpandingString &str) override;
+
     bool get_system_id(char buf[50]) override;
     bool get_system_id_unformatted(uint8_t buf[], uint8_t &len) override;
 
