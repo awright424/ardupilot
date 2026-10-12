@@ -39,6 +39,7 @@
 #include "RCOutput_Sysfs.h"
 #include "RCOutput_ZYNQ.h"
 #include "RCOutput_RPI.h"
+#include "RCOutput_E902.h"
 #include "SPIDevice.h"
 #include "SPIUARTDriver.h"
 #include "Scheduler.h"
@@ -178,7 +179,8 @@ static RCInput_RCProtocol rcinDriver{"/dev/ttyAMA0", NULL};
       CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_NAVIGATOR || \
       CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_NAVIO2 || \
       CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_EDGE || \
-      CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_T3_GEM_O1
+      CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_T3_GEM_O1 || \
+      CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_CUBIE_A7Z
 // this is needed to allow for RC input using SERIALn_PROTOCOL=23. No fd is opened
 // in the linux driver and instead user needs to provide a uart via SERIALn_PROTOCOL
 static RCInput_RCProtocol rcinDriver{nullptr, nullptr};
@@ -235,6 +237,8 @@ static RCOutput_Multi rcoutDriver{2, &rcoutPcaDriver, &rcoutSysfsDriver};
 static RCOutput_Sysfs rcoutDriver(0, 0, 7);
 #elif CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_RPI
 static RCOutput_RPI rcoutDriver;
+#elif CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_CUBIE_A7Z
+static RCOutput_E902 rcoutDriver;
 #else
 static Empty::RCOutput rcoutDriver;
 #endif
